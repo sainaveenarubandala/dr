@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vascular & Endovascular Procedures</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+              <a class="navbar-brand" href="aboutdoctor.html">Dr.P.Sai Sarath Chandra</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link"  href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="aboutdoctor.html">About Us</a>
+                  </li>
+                  <!-- <li class="nav-active" aria-current="page">
+                    <a class="nav-link" href="services.html">Services</a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Blogs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="procedures.html">Procedures</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contactus.html">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <button class="btn01"> <a class="nav-link" href="bookanappointment.html">Book Appointment</a></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><line x1="12" y1="22" x2="12" y2="12"></line></svg>
+                <h1>Vascular Procedures</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search procedures...">
+            </div>
+        </nav>
+    </header>
+    <main>
+        
+        <div class="procedures-grid" id="proceduresContainer">
+            <!-- Procedures will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const procedures = [
+    {
+        id: 1,
+        title: "Carotid Endarterectomy",
+        description: "A critical surgical intervention to remove dangerous plaque buildup from the carotid arteries, significantly reducing stroke risk. This precise procedure involves careful dissection of the artery, meticulous removal of atherosclerotic plaque, and expert closure techniques. The surgery requires extensive experience in vascular handling and microsurgical techniques. Post-operative monitoring includes neurological checks and ultrasound verification of restored blood flow. Success rates are notably high when performed by experienced surgeons, with most patients experiencing improved cerebral blood flow and reduced stroke risk. Recovery typically involves 24-48 hours of close monitoring followed by a graduated return to normal activities.",
+        image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 2,
+        title: "Endovascular Aneurysm Repair (EVAR)",
+        description: "A minimally invasive alternative to open aortic surgery, utilizing advanced imaging and stent-graft technology. This procedure involves the precise placement of a custom-fitted stent-graft through small groin incisions, navigating through the arterial system. Real-time fluoroscopic guidance ensures accurate deployment within the aneurysm. The procedure typically takes 2-3 hours and requires specialized endovascular expertise. Post-operative care includes regular imaging surveillance to monitor graft position and aneurysm exclusion. This technique has revolutionized aortic surgery by reducing recovery time and surgical trauma. Patients often return home within 24-48 hours and resume normal activities within weeks.",
+        image: "https://images.unsplash.com/photo-1613292348664-737cf3abf5d4?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        id: 3,
+        title: "Peripheral Bypass Surgery",
+        description: "A complex revascularization procedure creating new blood flow pathways around blocked arteries in the legs. The surgery involves harvesting suitable bypass conduit (either autologous vein or synthetic graft) and creating precise anastomoses above and below the blockage. Careful graft tunneling and positioning are crucial for long-term success. Intraoperative flow measurements confirm adequate bypass function. The procedure requires extensive knowledge of arterial anatomy and bypass techniques. Post-operative management includes anticoagulation, wound care, and rehabilitation. Regular surveillance ensures graft patency and limb salvage. Recovery involves graduated walking programs and risk factor modification.",
+        image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 4,
+        title: "Arteriovenous Fistula Creation",
+        description: "A specialized vascular access surgery essential for hemodialysis patients, creating a direct connection between artery and vein. Preoperative vessel mapping ensures optimal site selection and surgical planning. The procedure requires precise microsurgical technique to create a durable anastomosis. Careful consideration of flow dynamics prevents steal syndrome and ensures adequate dialysis access. Post-operative monitoring includes regular assessment of fistula maturation and function. The success of this procedure significantly impacts dialysis efficiency and patient outcomes. Regular surveillance prevents complications and maintains long-term access patency. Patient education includes fistula care and protection techniques.",
+        image: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 5,
+        title: "Varicose Vein Ablation",
+        description: "A modern minimally invasive treatment for symptomatic varicose veins using thermal or chemical ablation techniques. The procedure begins with ultrasound mapping of affected veins and access point selection. Local anesthesia and tumescent solution provide patient comfort during treatment. Careful catheter positioning and energy delivery ensure complete vein closure. The procedure typically takes 45-60 minutes per leg. Post-procedure compression therapy optimizes treatment outcomes. Patients resume normal activities within 24-48 hours. Follow-up ultrasound confirms successful vein closure and absence of complications. Long-term results show high patient satisfaction and symptom improvement.",
+        image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 6,
+        title: "Thoracic Outlet Decompression",
+        description: "A complex surgical procedure addressing compression of neurovascular structures in the thoracic outlet. Detailed preoperative imaging guides surgical approach and extent of decompression needed. The procedure may involve first rib resection, scalene muscle division, and neurolysis. Careful dissection prevents injury to vital structures while ensuring adequate decompression. Intraoperative monitoring helps prevent complications and confirm adequate decompression. Post-operative physical therapy is crucial for optimal outcomes. Recovery involves graduated range of motion exercises and activity modification. Long-term follow-up ensures sustained symptom relief and function.",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 7,
+        title: "Mesenteric Revascularization",
+        description: "A critical procedure restoring blood flow to the intestines in patients with chronic mesenteric ischemia. Careful preoperative planning includes detailed vascular imaging and assessment of collateral circulation. The procedure may involve bypass grafting or endovascular stenting techniques. Precise timing and technique are essential to prevent intestinal complications. Post-operative monitoring includes assessment of bowel function and perfusion. Nutritional support plays a key role in recovery and outcomes. Regular follow-up ensures maintained vascular patency and symptom resolution. Long-term success requires ongoing risk factor modification.",
+        image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 8,
+        title: "Deep Venous Thrombectomy",
+        description: "An urgent intervention to remove dangerous blood clots from deep veins, preventing post-thrombotic syndrome. The procedure combines mechanical and pharmacological thrombolysis techniques. Careful patient selection and timing optimize outcomes and minimize complications. Intraoperative venography guides complete clot removal and identifies underlying venous lesions. Post-procedure anticoagulation is carefully managed to prevent rethrombosis. Recovery involves early mobilization and compression therapy. Regular follow-up ensures maintained venous patency and function. Long-term success requires ongoing anticoagulation management.",
+        image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 9,
+        title: "Dialysis Access Revision",
+        description: "A specialized procedure to maintain or restore function of existing hemodialysis access sites. Preoperative imaging identifies specific areas requiring revision or intervention. Techniques may include thrombectomy, angioplasty, or surgical revision. Careful preservation of future access sites guides surgical approach. Intraoperative flow measurements confirm successful intervention. Post-procedure monitoring ensures adequate dialysis flow rates. Patient education includes access care and monitoring techniques. Regular surveillance prevents access failure and maintains dialysis efficiency.",
+        image: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 10,
+        title: "Limb Salvage Procedures",
+        description: "Complex interventions combining multiple techniques to prevent amputation in severe peripheral vascular disease. Comprehensive preoperative assessment includes detailed arterial mapping and tissue viability assessment. Procedures may combine endovascular and open surgical techniques. Meticulous wound care and infection control are essential components. Post-operative care includes intensive wound management and rehabilitation. Regular assessment of wound healing and perfusion guides ongoing care. Patient education focuses on foot care and risk factor modification. Long-term success requires ongoing surveillance and prompt intervention for complications.",
+        image: "https://images.unsplash.com/photo-1640263192162-20091da26066?q=80&w=2040&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const proceduresContainer = document.getElementById('proceduresContainer');
+    const searchInput = document.getElementById('searchInput');
+
+    function createProcedureCard(procedure) {
+        const card = document.createElement('div');
+        card.className = 'procedure-card';
+        card.innerHTML = `
+            <img src="${procedure.image}" alt="${procedure.title}" class="procedure-image">
+            <div class="procedure-content">
+                <h2 class="procedure-title">${procedure.title}</h2>
+                <p class="procedure-description">${procedure.description}</p>
+                <a href="#" class="read-more">Read more</a>
+            </div>
+        `;
+
+        const readMoreBtn = card.querySelector('.read-more');
+        readMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            card.classList.toggle('expanded');
+            readMoreBtn.textContent = card.classList.contains('expanded') ? 'Read less' : 'Read more';
+        });
+
+        return card;
+    }
+
+    function displayProcedures(filteredProcedures = procedures) {
+        proceduresContainer.innerHTML = '';
+        filteredProcedures.forEach(procedure => {
+            proceduresContainer.appendChild(createProcedureCard(procedure));
+        });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredProcedures = procedures.filter(procedure => 
+            procedure.title.toLowerCase().includes(searchTerm) ||
+            procedure.description.toLowerCase().includes(searchTerm)
+        );
+        displayProcedures(filteredProcedures);
+    });
+
+    displayProcedures();
+});
+
+    </script>
+
+
+<div id="footerSection"></div>
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footerSection').innerHTML = html;
+    });
+</script>  
+</body>
+</html>

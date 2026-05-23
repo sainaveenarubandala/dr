@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563eb">
+    <title>Vascular Health Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+              <a class="navbar-brand" href="aboutdoctor.html">Dr.P.Sai Sarath Chandra</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link"  href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="aboutdoctor.html">About Us</a>
+                  </li>
+                  <!-- <li class="nav-active" aria-current="page">
+                    <a class="nav-link" href="services.html">Services</a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link active href="blog.html">Blogs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="procedures.html">Procedures</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contactus.html">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                   <button class="btn01"> <a class="nav-link" href="bookanappointment.html">Book Appointment</a></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <h1>Vascular Health Insights</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search blogs..." aria-label="Search blogs">
+            </div>
+        </nav>
+    </header>
+
+   
+
+    <!-- <footer>
+        <p>© 2024 Vascular Health Insights. All rights reserved.</p>
+    </footer> -->
+    <section class="services-grid" id="servicesContainer" role="list">
+               
+    </section>
+
+    <script src="services.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const blogsContainer = document.getElementById('servicesContainer');
+    const searchInput = document.getElementById('searchInput');
+
+    function createBlogCard(blog) {
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        card.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front">
+                    <img 
+                        src="${blog.image}" 
+                        alt="${blog.title}" 
+                        class="service-image"
+                        loading="lazy"
+                    >
+                    <div class="service-content">
+                        <h3 class="service-title">${blog.title}</h3>
+                        <p class="service-brief">${blog.brief}</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="service-title">${blog.title}</h3>
+                    <div class="service-description">${blog.description}</div>
+                    <div class="learn-more" aria-hidden="true">Tap anywhere to flip back</div>
+                </div>
+            </div>
+        `;
+
+        // Handle keyboard navigation
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.querySelector('.card-inner').style.transform = 
+                    card.querySelector('.card-inner').style.transform === 'rotateY(180deg)' 
+                        ? '' 
+                        : 'rotateY(180deg)';
+            }
+        });
+
+        return card;
+    }
+
+    function displayBlogs(filteredBlogs = blogs) {
+        blogsContainer.innerHTML = '';
+        if (filteredBlogs.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.style.textAlign = 'center';
+            noResults.style.gridColumn = '1 / -1';
+            noResults.style.padding = '2rem';
+            noResults.innerHTML = '<p>No matching blogs found. Try a different search term.</p>';
+            blogsContainer.appendChild(noResults);
+            return;
+        }
+        filteredBlogs.forEach(blog => {
+            blogsContainer.appendChild(createBlogCard(blog));
+        });
+    }
+
+    // Debounce search input to improve performance
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredBlogs = blogs.filter(blog => 
+                blog.title.toLowerCase().includes(searchTerm) ||
+                blog.brief.toLowerCase().includes(searchTerm) ||
+                blog.description.toLowerCase().includes(searchTerm)
+            );
+            displayBlogs(filteredBlogs);
+        }, 300);
+    });
+
+    // Initial display
+    displayBlogs();
+
+    // Handle touch devices
+    if ('ontouchstart' in window) {
+        document.documentElement.style.setProperty('--hover-media', 'none');
+    }
+});
+    </script>
+
+<script>
+    const blogs = [
+    {
+        id: 1,
+        title: "Understanding Atherosclerosis",
+        brief: "The silent threat to vascular health and how to prevent it.",
+        description: "Atherosclerosis is a condition where arteries become narrowed and hardened due to plaque buildup. Learn about risk factors including high blood pressure, smoking, and high cholesterol. Discover lifestyle modifications and treatment options that can help prevent and manage this common vascular condition.",
+        image: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 2,
+        title: "Latest Advances in Stent Technology",
+        brief: "Revolutionary developments in vascular stenting procedures.",
+        description: "Explore the newest innovations in stent design, including drug-eluting stents, bioresorbable vascular scaffolds, and smart stents with monitoring capabilities. Learn how these advances are improving patient outcomes and reducing recovery times in vascular procedures.",
+        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 3,
+        title: "Exercise and Vascular Health",
+        brief: "How physical activity impacts your blood vessels.",
+        description: "Regular exercise plays a crucial role in maintaining vascular health. Discover the best types of exercise for improving circulation, strengthening vessel walls, and reducing the risk of vascular diseases. Learn about recommended activity levels and safe exercise practices.",
+        image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 4,
+        title: "Diet for Healthy Blood Vessels",
+        brief: "Nutritional strategies to maintain vascular wellness.",
+        description: "Your diet significantly impacts vascular health. Learn about foods that promote healthy blood vessels, including omega-3 rich fish, antioxidant-packed berries, and whole grains. Understand how different nutrients affect blood vessel function and overall circulation.",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 5,
+        title: "Smoking and Vascular Disease",
+        brief: "The devastating effects of smoking on blood vessels.",
+        description: "Smoking is a major risk factor for vascular disease. Explore how tobacco use damages blood vessels, increases risk of aneurysms, and accelerates atherosclerosis. Learn about effective strategies for smoking cessation and how vessels can heal after quitting.",
+        image: "https://images.unsplash.com/photo-1527099908998-5b73a5fe2a0d?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 6,
+        title: "Managing Diabetes and Vascular Health",
+        brief: "Protecting your vessels while living with diabetes.",
+        description: "Diabetes can significantly impact vascular health. Learn about the connection between blood sugar levels and vessel damage, preventive measures, and the importance of regular vascular screening for diabetic patients.",
+        image: "https://images.unsplash.com/photo-1683715697625-b46ce174f92c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        id: 7,
+        title: "Stress and Your Blood Vessels",
+        brief: "How mental health affects vascular wellness.",
+        description: "Chronic stress can have serious implications for vascular health. Understand the physiological connection between stress and blood vessel function, and discover effective stress management techniques to protect your vascular system.",
+        image: "https://images.unsplash.com/photo-1494451930944-8998635c2123?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 8,
+        title: "Women's Vascular Health",
+        brief: "Unique challenges and considerations for women.",
+        description: "Women face distinct vascular health challenges throughout their lives. Learn about female-specific risk factors, the impact of hormones on vascular health, and important screening recommendations for women of all ages.",
+        image: "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 9,
+        title: "Sleep and Vascular Function",
+        brief: "The crucial link between rest and vessel health.",
+        description: "Quality sleep is essential for vascular health. Explore how sleep patterns affect blood pressure, vessel repair, and overall cardiovascular function. Learn about optimal sleep habits and their impact on long-term vascular wellness.",
+        image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 10,
+        title: "Aging and Vascular Health",
+        brief: "Maintaining vessel health throughout the years.",
+        description: "As we age, our blood vessels face new challenges. Understand the natural aging process of blood vessels, risk factors that accelerate vascular aging, and strategies to maintain healthy circulation in your later years.",
+        image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 11,
+        title: "Environmental Factors and Vessels",
+        brief: "How external conditions affect vascular health.",
+        description: "Environmental factors like pollution, temperature, and altitude can impact vascular health. Learn about protecting your vessels from environmental stressors and maintaining circulation in various conditions.",
+        image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000"
+    },
+    {
+        id: 12,
+        title: "Future of Vascular Medicine",
+        brief: "Emerging treatments and research developments.",
+        description: "Explore cutting-edge developments in vascular medicine, including artificial vessels, gene therapy, and regenerative medicine. Learn about promising research that could revolutionize the treatment of vascular diseases in the coming years.",
+        image: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&q=80&w=1000"
+    }
+];
+</script>
+
+
+<div id="footerSection"></div>
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footerSection').innerHTML = html;
+    });
+</script>  
+</body>
+</html>
